@@ -13,7 +13,9 @@ positional arguments:
   second_file
 
 optional arguments:
-  -h, --help            show this help message and exit''')
+  -h, --help            show this help message and exit
+  -f FORMAT, --format FORMAT
+                        set format of output''')
 
 
 if __name__ == '__main__':
