@@ -1,8 +1,11 @@
 import argparse
 import json
 
+
 def main():
-    parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')
+    parser = argparse.ArgumentParser(
+        description='Compares two configuration files and shows a difference.'
+    )
     parser.add_argument('first_file', action='store')
     parser.add_argument('second_file', action='store')
     parser.add_argument('-f', '--format', metavar='FORMAT', action='store',
@@ -33,7 +36,9 @@ def generate_diff(first_file, second_file):
             if old_dictionary[key] == new_dictionary[key]:
                 diff_dict[key] = ('unchanged', old_dictionary[key])
             else:
-                diff_dict[key] = ('changed', old_dictionary[key], new_dictionary[key])
+                diff_dict[key] = (
+                    'changed', old_dictionary[key], new_dictionary[key]
+                )
         result = '{\n'
         for k, v in sorted(diff_dict.items()):
             if v[0] == 'added':
