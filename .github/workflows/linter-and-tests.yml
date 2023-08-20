@@ -21,8 +21,7 @@ jobs:
           pip install flake8
           pip install poetry
       - name: Test with pytest
-        run: |
-          make test-coverage
+        run: make test-coverage
       - name: test coverage  
         uses: paambaati/codeclimate-action@v3.2.0
         if: github.ref_name == 'main'
