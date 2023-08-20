@@ -15,6 +15,22 @@ def main():
     print(generate_diff(args.first_file, args.second_file))
 
 
+def diff_to_str(diff):
+    result = '{\n'
+    for k, v in sorted(diff.items()):
+        if v[0] == 'added':
+            result += f'  + {k} : {v[-1]}\n'
+        elif v[0] == 'deleted':
+            result += f'  - {k} : {v[1]}\n'
+        elif v[0] == 'unchanged':
+            result += f'    {k} : {v[1]}\n'
+        else:
+            result += f'  - {k} : {v[1]}\n'
+            result += f'  + {k} : {v[2]}\n'
+    result += '}'
+    return result
+
+
 def generate_diff(first_file, second_file):
     with (
         open(first_file) as old_file,
@@ -39,19 +55,7 @@ def generate_diff(first_file, second_file):
                 diff_dict[key] = (
                     'changed', old_dictionary[key], new_dictionary[key]
                 )
-        result = '{\n'
-        for k, v in sorted(diff_dict.items()):
-            if v[0] == 'added':
-                result += f'  + {k} : {v[-1]}\n'
-            elif v[0] == 'deleted':
-                result += f'  - {k} : {v[1]}\n'
-            elif v[0] == 'unchanged':
-                result += f'    {k} : {v[1]}\n'
-            else:
-                result += f'  - {k} : {v[1]}\n'
-                result += f'  + {k} : {v[2]}\n'
-        result += '}'
-        return result
+        return diff_to_str(diff_dict)
 
 
 if __name__ == '__main__':
