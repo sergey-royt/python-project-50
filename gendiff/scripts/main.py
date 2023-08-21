@@ -1,6 +1,7 @@
 import argparse
 from gendiff.gendiff import generate_diff
 
+
 def main():
     args = parse_arguments()
     print(generate_diff(args.first_file, args.second_file))
