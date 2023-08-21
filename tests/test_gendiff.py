@@ -1,5 +1,5 @@
 import pytest
-from gendiff.scripts.gendiff import generate_diff
+from gendiff.gendiff import generate_diff
 from tests.fixtures.expected_result import PLAIN_JSON_1_2, PLAIN_JSON_2_1
 from tests.fixtures.expected_result import PLAIN_YAML_1_2, PLAIN_YAML_2_1
 
