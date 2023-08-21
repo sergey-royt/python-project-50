@@ -20,7 +20,8 @@ PLAIN_YAML_1_2 = '''{
   - age : 30
   + age : 25
     city : New York
-    country : USA
+  - country : USA
+  + country : United States
     is_student : True
     name : John Doe
   - street : 123 Main St
@@ -30,8 +31,9 @@ PLAIN_YAML_2_1 = '''{
   - age : 25
   + age : 30
     city : New York
-    country : USA
+  - country : United States
+  + country : USA
     is_student : True
     name : John Doe
   + street : 123 Main St
-}   '''
+}'''
