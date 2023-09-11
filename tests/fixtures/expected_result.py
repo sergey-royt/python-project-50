@@ -1,4 +1,4 @@
-PLAIN_JSON_1_2 = '''{
+PLAIN_DIFF_1_2 = '''{
   - follow: false
     host: hexlet.io
   - proxy: 123.234.53.22
@@ -7,35 +7,13 @@ PLAIN_JSON_1_2 = '''{
   + verbose: true
 }'''
 
-PLAIN_JSON_2_1 = '''{
+PLAIN_DIFF_2_1 = '''{
   + follow: false
     host: hexlet.io
   + proxy: 123.234.53.22
   - timeout: 20
   + timeout: 50
   - verbose: true
-}'''
-
-PLAIN_YAML_1_2 = '''{
-  - age: 30
-  + age: 25
-    city: New York
-  - country: USA
-  + country: United States
-    is_student: true
-    name: John Doe
-  - street: 123 Main St
-}'''
-
-PLAIN_YAML_2_1 = '''{
-  - age: 25
-  + age: 30
-    city: New York
-  - country: United States
-  + country: USA
-    is_student: true
-    name: John Doe
-  + street: 123 Main St
 }'''
 
 NESTED_STYLISH_DIFF_STR_12 = '''{
@@ -51,7 +29,7 @@ NESTED_STYLISH_DIFF_STR_12 = '''{
         }
         setting6: {
             doge: {
-              - wow:
+              - wow: 
               + wow: so much
             }
             key: value

@@ -1,6 +1,4 @@
-name: John Doe
-age: 30
-is_student: true
-street: 123 Main St
-city: New York
-country: USA
+host: hexlet.io
+timeout: 50
+proxy: 123.234.53.22
+follow: false
