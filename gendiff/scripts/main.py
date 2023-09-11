@@ -1,10 +1,9 @@
 import argparse
-from gendiff.gendiff import generate_diff
-
+from gendiff.gendiff import make_diff
 
 def main():
     args = parse_arguments()
-    print(generate_diff(args.first_file, args.second_file))
+    print(make_diff(args.first_file, args.second_file, args.format))
 
 
 def parse_arguments():
@@ -13,7 +12,10 @@ def parse_arguments():
     )
     parser.add_argument('first_file', action='store')
     parser.add_argument('second_file', action='store')
-    parser.add_argument('-f', '--format', metavar='FORMAT', action='store',
+    parser.add_argument('-f',
+                        '--format',
+                        type=str,
+                        default='stylish',
                         help='set format of output')
     return parser.parse_args()
 
