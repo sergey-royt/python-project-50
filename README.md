@@ -6,3 +6,4 @@
 |:----------------|----------------------------------------------------------------|
 |JSON             | [Link](https://asciinema.org/a/queDiNyUn2QfPXTc5naUlDzwD)      |
 |YML/YAML         | [Link](https://asciinema.org/a/1PvMTyxHukx4KBdgCywuX6ClX)      |
+|Nested JSON      | [Link](https://asciinema.org/a/k51nLHNRLoXmC7S7KoaLIfzZ6)      |
