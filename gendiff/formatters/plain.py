@@ -1,6 +1,8 @@
 def _stringify_value(value):
     if isinstance(value, dict):
         return '[complex value]'
+    if isinstance(value, int):
+        return str(value)
     special_values = {
         'True': 'true',
         'False': 'false',
