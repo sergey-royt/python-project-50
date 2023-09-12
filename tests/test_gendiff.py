@@ -4,6 +4,7 @@ from tests.fixtures.expected_result import PLAIN_DIFF_1_2, PLAIN_DIFF_2_1
 from tests.fixtures.expected_result import NESTED_STYLISH_DIFF_STR_12
 from tests.fixtures.expected_result import PLAIN_NESTED_DIFF_1_2
 
+
 @pytest.mark.parametrize("make_diff_args, expected",
                          [
                              (('./tests/fixtures/plain1.json', './tests/fixtures/plain2.json'),
