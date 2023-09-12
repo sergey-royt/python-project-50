@@ -1,16 +1,17 @@
 def _stringify_value(value):
     if isinstance(value, dict):
         return '[complex value]'
-    if isinstance(value, int):
+    elif type(value) is int:
         return str(value)
-    special_values = {
-        'True': 'true',
-        'False': 'false',
-        'None': 'null',
-        '': "''"
-    }
-    str_value = str(value)
-    return special_values.get(str_value, f"'{str_value}'")
+    else:
+        special_values = {
+            'True': 'true',
+            'False': 'false',
+            'None': 'null',
+            '': "''"
+        }
+        str_value = str(value)
+        return special_values.get(str_value, f"'{str_value}'")
 
 
 def _stringify(status, content, path):
