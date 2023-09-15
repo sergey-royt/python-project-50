@@ -1,6 +1,7 @@
 import pytest
 from gendiff.gendiff import generate_diff
 
+
 @pytest.mark.parametrize("make_diff_args, expected",
                          [
                              (('./tests/fixtures/plain1.json', './tests/fixtures/plain2.json'),

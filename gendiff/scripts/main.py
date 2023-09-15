@@ -14,7 +14,7 @@ def parse_arguments():
     parser.add_argument('first_file', action='store')
     parser.add_argument('second_file', action='store')
     parser.add_argument('-f',
-                        '--format',
+                        '--format', choices=['stylish', 'plain', 'json'],
                         type=str,
                         default='stylish',
                         help='set format of output')
