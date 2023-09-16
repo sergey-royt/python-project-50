@@ -1,45 +1,44 @@
-def set_value(dictionary, path, value):
-    if len(path) != 0:
-        current = dictionary
-        for key in path[:-1]:
-            if key not in current or not isinstance(current[key], dict):
-                current[key] = {}
-            current = current[key]
-        current[path[-1]] = value
-
-
-def helper(dict_old, dict_new, path, diff_dict):
-
-    old_keys = dict_old.keys()
-    new_keys = dict_new.keys()
-
-    added_keys = new_keys - old_keys
-    deleted_keys = old_keys - new_keys
-    common_keys = new_keys & old_keys
-
-    for key in added_keys:
-        set_value(diff_dict, path + (key,),
-                  ('added', dict_new[key]))
-
-    for key in deleted_keys:
-        set_value(diff_dict, path + (key,),
-                  ('deleted', dict_old[key]))
-
-    for key in common_keys:
-        value_new = dict_new[key]
-        value_old = dict_old[key]
-
-        if isinstance(value_new, dict) and isinstance(value_old, dict):
-            helper(value_old, value_new, path + (key,), diff_dict)
-        elif value_new != value_old:
-            set_value(diff_dict, path + (key,),
-                      ('changed', (value_old, value_new)))
-        else:
-            set_value(diff_dict, path + (key,),
-                      ('unchanged', value_old))
-
-
 def make_ast(old_dict, new_dict):
-    diff_dict = {}
-    helper(old_dict, new_dict, tuple(), diff_dict)
+    diff_dict = []
+
+    for key in sorted(list({**old_dict, **new_dict}.keys())):
+        if key not in old_dict:
+            diff_dict.append({
+                'key': key,
+                'action': 'added',
+                'value': new_dict[key]
+            })
+
+        elif key not in new_dict:
+            diff_dict.append({
+                'key': key,
+                'action': 'deleted',
+                'value': old_dict[key]
+            })
+
+        elif key in old_dict and key in new_dict:
+
+            if isinstance(
+                    old_dict[key], dict) and isinstance(new_dict[key], dict):
+                diff_dict.append({
+                    'key': key,
+                    'action': 'nested',
+                    'children': make_ast(old_dict[key], new_dict[key])
+                })
+
+            elif old_dict[key] == new_dict[key]:
+                diff_dict.append({
+                    'key': key,
+                    'action': 'unchanged',
+                    'value': old_dict[key],
+                })
+
+            else:
+                diff_dict.append({
+                    'key': key,
+                    'action': 'changed',
+                    'old_value': old_dict[key],
+                    'new_value': new_dict[key]
+                })
+
     return diff_dict
