@@ -6,15 +6,9 @@ from gendiff.formatters.plain import plain
 from gendiff.formatters.json import gen_json_diff
 
 
-def get_file_data(file):
-    extension = pathlib.Path(file).suffix
-    content = open(file, 'r')
-    return parse(content, extension)
-
-
 def generate_diff(first_file, second_file, format_type='stylish'):
-    old = get_file_data(first_file)
-    new = get_file_data(second_file)
+    old = parse(first_file, pathlib.Path(first_file).suffix)
+    new = parse(second_file, pathlib.Path(second_file).suffix)
     return {'stylish': stylish,
             'plain': plain,
             'json': gen_json_diff}[format_type](make_ast(old, new))
